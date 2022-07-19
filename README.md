@@ -10,5 +10,8 @@ Run render_full_mesh.py, render_normal_map_of_full_mesh.py, and render_depth_map
 `blender blank.blend -b -P render_full_mesh.py -- 0501 90`
 Replace render_full_mesh.py with render_normal_map_of_full_mesh.py or render_depth_map_of_full_mesh.py to render normal map and depth map respectively. 
 
+### 3) Rendering Human Parsing maps
+While we cannot really render human parsing maps, we can get pseudo-groundtruths using a pre-trained model. Go to https://github.com/GoGoDuck912/Self-Correction-Human-Parsing and you can run their google colab demo to obtain human parsing maps from the rgb images rendered in the "rendering_script/buffer_fixed_full_mesh" folder. Put the results in "rendering_script/render_human_parse_results". Each subject should have a separate subfolder (e.g. "rendering_script/render_human_parse_results/0510/rendered_parse_180.npy")
+
 ## To Run :
 Run the script train_integratedPIFu.py. Configuration can be set in lib/options.py file.
