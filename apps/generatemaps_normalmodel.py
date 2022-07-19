@@ -35,9 +35,9 @@ generate_for_buff_dataset = False
 
 
 if generate_for_buff_dataset:
-    trained_normal_maps_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_normal_maps"
+    trained_normal_maps_path = "buff_dataset/buff_normal_maps"
 else:
-    trained_normal_maps_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_normal_maps"
+    trained_normal_maps_path = "trained_normal_maps"
 
 
 batch_size = 2
@@ -109,8 +109,8 @@ def generate_maps(opt):
 
     # load model
 
-    F_modelnormal_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_12_Nov_21_Time_19_17_20/netF_model_state_dict.pickle"
-    B_modelnormal_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_12_Nov_21_Time_19_17_20/netB_model_state_dict.pickle"
+    F_modelnormal_path = "apps/checkpoints/Date_12_Nov_21_Time_19_17_20/netF_model_state_dict.pickle" # Date_12_Nov_21_Time_19_17_20 is the folder to use
+    B_modelnormal_path = "apps/checkpoints/Date_12_Nov_21_Time_19_17_20/netB_model_state_dict.pickle"
 
     print('Resuming from ', F_modelnormal_path)
     print('Resuming from ', B_modelnormal_path)

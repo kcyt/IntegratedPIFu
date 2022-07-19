@@ -108,7 +108,7 @@ def train(opt):
     if load_model: # by default is false
         
         
-        modeldepthfilter_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_08_Jan_22_Time_02_03_43/depthfilter_model_state_dict.pickle"
+        modeldepthfilter_path = "apps/checkpoints/Date_08_Jan_22_Time_02_03_43/depthfilter_model_state_dict.pickle" # Date_08_Jan_22_Time_02_03_43 is folder to load
 
         print('Resuming from ', modeldepthfilter_path)
 

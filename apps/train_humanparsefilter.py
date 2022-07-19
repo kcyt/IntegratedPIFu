@@ -119,7 +119,7 @@ def train(opt):
 
 
     if load_model: 
-        modelparsefilter_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_06_Jan_22_Time_00_49_24/humanParsefilter_model_state_dict.pickle"
+        modelparsefilter_path = "apps/checkpoints/Date_06_Jan_22_Time_00_49_24/humanParsefilter_model_state_dict.pickle" # Date_06_Jan_22_Time_00_49_24 is folder to load
 
         print('Resuming from ', modelparsefilter_path)
 

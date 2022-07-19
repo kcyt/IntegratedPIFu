@@ -33,7 +33,7 @@ def load_trimesh(root_dir, training_subject_list = None):
         if f not in training_subject_list: # only load meshes that are in the training set
             continue
 
-        meshs[f] = trimesh.load(os.path.join(root_dir, f, '%s_clean.obj' % f))
+        meshs[f] = trimesh.load(os.path.join(root_dir, f, '%s.obj' % f))
 
     return meshs
 
@@ -53,7 +53,7 @@ class TrainDataset(Dataset):
     def __init__(self, opt, projection='orthogonal', phase = 'train', evaluation_mode=False, validation_mode=False):
         self.opt = opt
         self.projection_mode = projection
-        self.training_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/train_set_list.txt", dtype=str)
+        self.training_subject_list = np.loadtxt("train_set_list.txt", dtype=str)
 
         #if opt.debug_mode:
         #    self.training_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/fake_train_set_list.txt", dtype=str)
@@ -86,13 +86,13 @@ class TrainDataset(Dataset):
 
         if evaluation_mode:
             print("Overwriting self.training_subject_list!")
-            self.training_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/test_set_list.txt", dtype=str).tolist()
+            self.training_subject_list = np.loadtxt("test_set_list.txt", dtype=str).tolist()
             self.is_train = False
 
 
-        self.root = "/mnt/lustre/kennard.chan/render_THuman_with_blender/buffer_fixed_full_mesh"
+        self.root = "rendering_script/buffer_fixed_full_mesh"
 
-        self.mesh_directory = "/mnt/lustre/kennard.chan/split_mesh/results"
+        self.mesh_directory = "rendering_script/THuman2.0_Release"
         
         if (evaluation_mode):
             pass 
@@ -103,21 +103,21 @@ class TrainDataset(Dataset):
 
         
         if self.opt.use_groundtruth_normal_maps:
-            self.normal_directory_high_res = "/mnt/lustre/kennard.chan/render_THuman_with_blender/buffer_normal_maps_of_full_mesh"
+            self.normal_directory_high_res = "rendering_script/buffer_normal_maps_of_full_mesh"
         else:
-            self.normal_directory_high_res = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_normal_maps"
+            self.normal_directory_high_res = "trained_normal_maps"
 
         if self.opt.useGTdepthmap:
-            self.depth_map_directory = "/mnt/lustre/kennard.chan/render_THuman_with_blender/buffer_depth_maps_of_full_mesh"
+            self.depth_map_directory = "rendering_script/buffer_depth_maps_of_full_mesh"
         else:
 
-            self.depth_map_directory = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_depth_maps" # New version (Depth maps trained with only normal - Second Stage maps)
+            self.depth_map_directory = "trained_depth_maps" # New version (Depth maps trained with only normal - Second Stage maps)
 
 
         if self.opt.use_groundtruth_human_parse_maps:
-            self.human_parse_map_directory = "/mnt/lustre/kennard.chan/render_human_parse_results"
+            self.human_parse_map_directory = "rendering_script/render_human_parse_results"
         else:
-            self.human_parse_map_directory = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_parse_maps"
+            self.human_parse_map_directory = "trained_parse_maps"
 
 
 

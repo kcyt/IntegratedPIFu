@@ -30,9 +30,9 @@ class BuffDataset(Dataset):
     def __init__(self, opt):
         self.opt = opt
         self.projection_mode = 'orthogonal'
-        self.subjects = np.loadtxt("/mnt/lustre/kennard.chan/render_Buff_with_blender/simple_buff_subject_namesOnly.txt", dtype=str).tolist()
+        self.subjects = np.loadtxt("buff_subject_testing.txt", dtype=str).tolist()
 
-        self.root = "/mnt/lustre/kennard.chan/render_Buff_with_blender/simple_render_results"
+        self.root = "buff_dataset/buff_rgb_images"
 
 
 
@@ -63,17 +63,17 @@ class BuffDataset(Dataset):
         mask_path = os.path.join(self.root, "rendered_mask_" +  subject + ".png" ) 
 
         if produce_normal_maps:
-            nmlF_high_res_path =  os.path.join( "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_normal_maps" , "rendered_nmlF_" + subject + ".npy"  )
-            nmlB_high_res_path =  os.path.join( "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_normal_maps" , "rendered_nmlB_" + subject + ".npy" )
+            nmlF_high_res_path =  os.path.join( "buff_dataset/buff_normal_maps" , "rendered_nmlF_" + subject + ".npy"  )
+            nmlB_high_res_path =  os.path.join( "buff_dataset/buff_normal_maps" , "rendered_nmlB_" + subject + ".npy" )
 
         if produce_coarse_depth_maps:
-            coarse_depth_map_path =  os.path.join( "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_depth_maps" , "rendered_coarse_depthmap_" + subject + ".npy"  )
+            coarse_depth_map_path =  os.path.join( "buff_dataset/buff_depth_maps" , "rendered_coarse_depthmap_" + subject + ".npy"  )
         
         if produce_fine_depth_maps:
-            fine_depth_map_path =  os.path.join( "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_depth_maps" , "rendered_depthmap_" + subject + ".npy"  )
+            fine_depth_map_path =  os.path.join( "buff_dataset/buff_depth_maps" , "rendered_depthmap_" + subject + ".npy"  )
 
         if produce_parse_maps:
-            parse_map_path =  os.path.join( "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_parse_maps" , "rendered_parse_" + subject + ".npy"  ) 
+            parse_map_path =  os.path.join( "buff_dataset/buff_parse_maps" , "rendered_parse_" + subject + ".npy"  ) 
 
 
         load_size_associated_with_scale_factor = 1024

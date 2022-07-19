@@ -25,17 +25,17 @@ class NormalDataset(Dataset):
 
     def __init__(self, opt, evaluation_mode=False):
         self.opt = opt
-        self.training_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/train_set_list.txt", dtype=str).tolist()
+        self.training_subject_list = np.loadtxt("train_set_list.txt", dtype=str).tolist()
 
 
         if evaluation_mode:
             print("Overwriting self.training_subject_list!")
-            self.training_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/test_set_list.txt", dtype=str).tolist()
+            self.training_subject_list = np.loadtxt("test_set_list.txt", dtype=str).tolist()
             self.is_train = False
 
 
-        self.groundtruth_normal_map_directory = "/mnt/lustre/kennard.chan/render_THuman_with_blender/buffer_normal_maps_of_full_mesh"
-        self.root = "/mnt/lustre/kennard.chan/render_THuman_with_blender/buffer_fixed_full_mesh"
+        self.groundtruth_normal_map_directory = "rendering_script/buffer_normal_maps_of_full_mesh"
+        self.root = "rendering_script/buffer_fixed_full_mesh"
 
 
         self.subjects = self.training_subject_list   

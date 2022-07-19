@@ -11,8 +11,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 import numpy as np
 
 # Modify the two variables below as needed.
-source_mesh_folder = "/mnt/lustre/kennard.chan/specialized_pifuhd/apps/results/Date_11_Jul_22_Time_01_12_07" # Depth_HighRes_Comp_DOS Thuman
-use_Buff_dataset = True
+source_mesh_folder = "apps/results/Date_11_Jul_22_Time_01_12_07" # Date_11_Jul_22_Time_01_12_07 is folder to load
+use_Buff_dataset = False
 
 
 print('source_mesh_folder:', source_mesh_folder)
@@ -26,9 +26,9 @@ num_samples_to_use = 10000
 def run_test_mesh_already_prepared():
 
         if use_Buff_dataset:
-            test_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/render_Buff_with_blender/buff_subject_testing.txt", dtype=str).tolist()
+            test_subject_list = np.loadtxt("buff_subject_testing.txt", dtype=str).tolist()
         else:
-            test_subject_list = np.loadtxt("/mnt/lustre/kennard.chan/getTestSet/test_set_list.txt", dtype=str).tolist()
+            test_subject_list = np.loadtxt("test_set_list.txt", dtype=str).tolist()
 
         total_chamfer_distance = []
         total_point_to_surface_distance = []
@@ -37,9 +37,9 @@ def run_test_mesh_already_prepared():
             if use_Buff_dataset:
                 folder_name = subject.split('_')[0]
                 attire_name = subject.split('_', 1)[1] 
-                GT_mesh_path = os.path.join("/mnt/lustre/kennard.chan/render_Buff_with_blender/simple_buff_dataset/", folder_name, attire_name + '.ply' )
+                GT_mesh_path = os.path.join("<Path to BUFF folder>", folder_name, attire_name + '.ply' )
             else:
-                GT_mesh_path = os.path.join("/mnt/lustre/kennard.chan/split_mesh/results", subject, '%s_clean.obj' % subject)
+                GT_mesh_path = os.path.join("rendering_script", 'THuman2.0_Release' ,  subject, '%s.obj' % subject)
 
             source_mesh_path = os.path.join(source_mesh_folder, 'test_%s.obj' % subject)
             if not os.path.exists(source_mesh_path):

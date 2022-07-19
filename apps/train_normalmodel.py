@@ -93,8 +93,8 @@ def train(opt):
     if load_model: 
 
         
-        F_modelnormal_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_12_Nov_21_Time_01_38_54/netF_model_state_dict.pickle"
-        B_modelnormal_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_12_Nov_21_Time_01_38_54/netB_model_state_dict.pickle"
+        F_modelnormal_path = "apps/checkpoints/Date_12_Nov_21_Time_01_38_54/netF_model_state_dict.pickle" # Date_12_Nov_21_Time_01_38_54 is folder to load
+        B_modelnormal_path = "apps/checkpoints/Date_12_Nov_21_Time_01_38_54/netB_model_state_dict.pickle"
 
         print('Resuming from ', F_modelnormal_path)
         print('Resuming from ', B_modelnormal_path)

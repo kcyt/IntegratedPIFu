@@ -33,9 +33,9 @@ batch_size = 1
 
 
 if generate_for_buff_dataset:
-    generated_results_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_parse_maps"
+    generated_results_path = "buff_dataset/buff_parse_maps"
 else:
-    generated_results_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_parse_maps"
+    generated_results_path = "trained_parse_maps"
 
 
 
@@ -98,7 +98,7 @@ def generate_maps(opt):
 
     # load model
         
-    modelparsefilter_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_06_Jan_22_Time_00_49_24/humanParsefilter_model_state_dict.pickle"
+    modelparsefilter_path = "apps/checkpoints/Date_06_Jan_22_Time_00_49_24/humanParsefilter_model_state_dict.pickle" # Date_06_Jan_22_Time_00_49_24 is folder to use 
 
     print('Resuming from ', modelparsefilter_path)
 

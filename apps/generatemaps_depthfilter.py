@@ -38,14 +38,14 @@ batch_size = 4
 
 
 if generate_refined_trained_depth_maps:
-    trained_depth_maps_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_depth_maps"
+    trained_depth_maps_path = "trained_depth_maps"
 else:
-    trained_depth_maps_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_coarse_depth_maps"
+    trained_depth_maps_path = "trained_coarse_depth_maps"
 
 
 if generate_for_buff_dataset:
     print("Overwriting trained_depth_maps_path for Buff dataset")
-    trained_depth_maps_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/trained_buff_dataset/buff_depth_maps"
+    trained_depth_maps_path = "buff_dataset/buff_depth_maps"
 
 
 
@@ -107,9 +107,9 @@ def generate_maps(opt):
 
     # load model
     if generate_refined_trained_depth_maps:
-        modeldepthfilter_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_08_Jan_22_Time_02_03_43/depthfilter_model_state_dict.pickle"
+        modeldepthfilter_path = "apps/checkpoints/Date_08_Jan_22_Time_02_03_43/depthfilter_model_state_dict.pickle" # Date_08_Jan_22_Time_02_03_43 is the folder to use.
     else:
-        modeldepthfilter_path = "/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_06_Jan_22_Time_02_37_32/depthfilter_model_state_dict.pickle"
+        modeldepthfilter_path = "apps/checkpoints/Date_06_Jan_22_Time_02_37_32/depthfilter_model_state_dict.pickle" # Date_06_Jan_22_Time_02_37_32 is the folder to use.
 
     print('Resuming from ', modeldepthfilter_path)
 

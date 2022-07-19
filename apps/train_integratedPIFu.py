@@ -23,7 +23,7 @@ from lib.mesh_util import save_obj_mesh_with_color, reconstruction
 from lib.geometry import index
 
 
-seed = 10 
+seed = 0 
 random.seed(seed)
 np.random.seed(seed)
 torch.manual_seed(seed)
@@ -43,8 +43,8 @@ test_script_activate_option_use_BUFF_dataset = False # will only work if test_sc
 load_model_weights = True
 load_model_weights_for_high_res_too = False
 load_model_weights_for_low_res_finetuning_config = 0 # 0 == No Load weights; 1 == Load, load optimizerG weights; 2 == Load, load optimizer_lowResFineTune weights
-checkpoint_folder_to_load_low_res = '/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_15_Jul_22_Time_10_51_45'
-checkpoint_folder_to_load_high_res = '/mnt/lustre/kennard.chan/IntegratedPIFu/apps/checkpoints/Date_28_Jun_22_Time_02_49_38'
+checkpoint_folder_to_load_low_res = 'apps/checkpoints/Date_15_Jul_22_Time_10_51_45' # Date_15_Jul_22_Time_10_51_45 is folder to load
+checkpoint_folder_to_load_high_res = 'apps/checkpoints/Date_28_Jun_22_Time_02_49_38' # Date_28_Jun_22_Time_02_49_38 is folder to load
 epoch_to_load_from_low_res = 24
 epoch_to_load_from_high_res = 2
 
@@ -268,7 +268,7 @@ def train(opt):
     
     if test_script_activate:
         if test_script_activate_option_use_BUFF_dataset:
-            from lib.data.trial_BuffDataset import BuffDataset
+            from lib.data.BuffDataset import BuffDataset
             train_dataset = BuffDataset(opt)
         else:
             train_dataset = TrainDataset(opt, projection='orthogonal', phase = 'train', evaluation_mode = True)
