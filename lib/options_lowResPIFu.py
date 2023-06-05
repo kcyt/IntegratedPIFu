@@ -14,12 +14,12 @@ class BaseOptions():
 
 
         # start option check
-        parser.add_argument('--useDOS', default=True, help='depth oriented sampling')
-        parser.add_argument('--use_mask_for_rendering_high_res',default=True) 
+        parser.add_argument('--useDOS', default=False, help='depth oriented sampling')
+        parser.add_argument('--use_mask_for_rendering_high_res',default=False) 
         parser.add_argument('--use_mask_for_rendering_low_res',default=False) # Not used in the paper.
 
 
-        parser.add_argument('--update_low_res_pifu', default=True) # But setting to False can simplify training.
+        parser.add_argument('--update_low_res_pifu', default=False)
         parser.add_argument('--epoch_interval_to_update_low_res_pifu', default=1)
         parser.add_argument('--epoch_to_start_update_low_res_pifu', default=10)
         parser.add_argument('--epoch_to_end_update_low_res_pifu', default=30)
@@ -27,14 +27,14 @@ class BaseOptions():
 
 
         # high res component
-        parser.add_argument('--use_High_Res_Component', default=True) 
+        parser.add_argument('--use_High_Res_Component', default=False) 
         parser.add_argument('--High_Res_Component_sigma', default=2.0)
 
-        parser.add_argument('--use_human_parse_maps', default=False)  # Used in the paper, but may not lead to better results if accurate human parse map prediction cannot be achieved.
+        parser.add_argument('--use_human_parse_maps', default=False) 
         parser.add_argument('--use_groundtruth_human_parse_maps', default=False)
 
         # depth usage in low res PIFU models 
-        parser.add_argument('--use_depth_map', default=False) # Used in the paper, but may not lead to better results if accurate depth map prediction cannot be achieved.
+        parser.add_argument('--use_depth_map', default=False)
         parser.add_argument('--depth_in_front', default=False) # Used in the paper.
         parser.add_argument('--useGTdepthmap',default=False)
 
@@ -47,8 +47,8 @@ class BaseOptions():
         parser.add_argument('--use_normal_map_for_parse_training', default=True)
 
         
-        parser.add_argument('--num_sample_inout', type=int, default=16000, help='# of sampling points')
-        #parser.add_argument('--num_sample_inout', type=int, default=8000, help='# of sampling points')
+        #parser.add_argument('--num_sample_inout', type=int, default=16000, help='# of sampling points')
+        parser.add_argument('--num_sample_inout', type=int, default=8000, help='# of sampling points')
 
         parser.add_argument('--sigma_low_resolution_pifu', type=float, default=3.5, help='sigma for sampling')
         parser.add_argument('--sigma_high_resolution_pifu', type=float, default=2.0, help='sigma for sampling') 
@@ -57,7 +57,7 @@ class BaseOptions():
         parser.add_argument('--use_back_normal', default=False) # can be True as well, we did not observe a real impact.
 
 
-        parser.add_argument('--num_epoch', type=int, default=35, help='num epoch to train')
+        parser.add_argument('--num_epoch', type=int, default=50, help='num epoch to train') # depends on user's preference as well. (e.g. how large is your train set / Did validation error stop decreasing etc.)
 
 
         parser.add_argument('--learning_rate_G', type=float, default=1e-3, help='adam learning rate for low res')

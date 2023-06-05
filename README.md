@@ -35,4 +35,9 @@ Replace render_full_mesh.py with render_normal_map_of_full_mesh.py or render_dep
 While we cannot really render human parsing maps, we can get pseudo-groundtruths using a pre-trained model. Go to https://github.com/kcyt/Self-Correction-Human-Parsing and follow the instructions to obtain human parsing maps from the rgb images rendered in the "rendering_script/buffer_fixed_full_mesh" folder. Put the results (a 'render_human_parse_results' folder) into "rendering_script". Each subject should have a separate subfolder (e.g. "rendering_script/render_human_parse_results/0510/rendered_parse_180.npy")
 
 ## To Run :
-Run the script train_integratedPIFu.py. Configuration can be set in lib/options.py file.
+Run the script train_integratedPIFu.py. Configuration can be set in lib/options.py file. The default options in lib/options.py are used to train the HighResIntegrator. If you do not want to use an already-trained/pre-trained PIFu, you can start training a PIFu by setting the options in lib/options.py to the default options set in lib/options_lowResPIFu. We will simplify and streamline these procedures in the near future. 
+
+
+
+
+

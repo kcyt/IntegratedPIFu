@@ -34,13 +34,13 @@ opt = parser.parse()
 gen_test_counter = 0
 
 
-debug_mode = True # For internal use, not for publicly released version.
+debug_mode = False # For internal use, not for publicly released version.
 test_script_activate = False # Set to True to generate the test subject meshes
 test_script_activate_option_use_BUFF_dataset = False # will only work if test_script_activate is True
 
 
 # Whether to load model weights
-load_model_weights = True
+load_model_weights = False
 load_model_weights_for_high_res_too = False
 load_model_weights_for_low_res_finetuning_config = 0 # 0 == No Load weights; 1 == Load, load optimizerG weights; 2 == Load, load optimizer_lowResFineTune weights
 checkpoint_folder_to_load_low_res = 'apps/checkpoints/Date_15_Jul_22_Time_10_51_45' # Date_15_Jul_22_Time_10_51_45 is folder to load
