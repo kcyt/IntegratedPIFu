@@ -161,7 +161,17 @@ class Up(nn.Module):
         return self.conv(x)
 
 
+class _layer_norm(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.eps = 1e-5
 
+
+    def forward(self, x):
+        mean = torch.mean(x, dim=[1,2,3], keepdim=True )
+        var = torch.var(x, dim=[1,2,3], keepdim=True, unbiased=False)
+        y = (x-mean)/torch.sqrt(var+self.eps)
+        return y
 
 
 
@@ -184,10 +194,15 @@ class DifferenceIntegratedHGFilter(nn.Module):
  
         last_ch = self.last_ch
 
-        self.bn0 = nn.InstanceNorm2d(256 )
-        self.bn1 = nn.InstanceNorm2d(128 )
+        #self.bn0 = nn.InstanceNorm2d(256 )
+        #self.bn1 = nn.InstanceNorm2d(128 )
+        #self.bn3 = nn.InstanceNorm2d(64+256)
 
-        self.bn3 = nn.InstanceNorm2d(64+256)
+        self.bn0 = _layer_norm()
+        self.bn1 = _layer_norm()
+        self.bn3 = _layer_norm()
+
+
 
         self.conv4 = nn.Conv2d(128+256, 64+256, kernel_size=3, stride=1, padding=1)
 
